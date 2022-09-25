@@ -5,4 +5,8 @@ app.get('/', (req, res) => {
     res.send('Hello world!');
 });
 
-app.listen(3000);
+app.get('*', (req, res) => {
+    res.status(404).send('<h1>ERROR 404: Page Not Found</h1>');
+});
+
+app.listen(process.env.PORT);
