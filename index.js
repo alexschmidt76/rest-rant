@@ -10,6 +10,9 @@ const app = express();
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
+// Places
+app.use('/places', require('./controllers/places'));
+
 // ROUTES
 // home page
 app.get('/', (req, res) => {
@@ -20,9 +23,6 @@ app.get('/', (req, res) => {
 app.get('*', (req, res) => {
     res.status(404).render('error404');
 });
-
-// Places
-app.use('/places', require('./controllers/places'));
 
 // LISTEN
 app.listen(PORT, () => {
