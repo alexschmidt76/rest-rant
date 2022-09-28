@@ -1,17 +1,28 @@
-require('dotenv').config();
+// DEPENDENCIES
 const express = require('express');
+
+// CONFIGURATION
+require('dotenv').config();
+const PORT = process.env.PORT;
 const app = express();
 
-app.use('/places', require('./controllers/places'));
+// MIDDLEWARE
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
+// ROUTES
 app.get('/', (req, res) => {
-    res.send('Hello world!');
+    res.render('home');
 });
 
 app.get('*', (req, res) => {
     res.status(404).send('<h1>ERROR 404: Page Not Found</h1>');
 });
 
-app.listen(process.env.PORT, () => {
+// Places
+app.use('/places', require('./controllers/places'));
+
+// LISTEN
+app.listen(PORT, () => {
     console.log('connected');
 });
