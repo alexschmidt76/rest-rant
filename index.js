@@ -11,12 +11,14 @@ app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
 // ROUTES
+// home page
 app.get('/', (req, res) => {
     res.render('home');
 });
 
+// 404 page
 app.get('*', (req, res) => {
-    res.status(404).send('<h1>ERROR 404: Page Not Found</h1>');
+    res.status(404).render('error404');
 });
 
 // Places
