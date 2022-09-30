@@ -1,4 +1,12 @@
+p {
+    text-align: center;
+}
+
 h1 {
     text-align: center;
     color: cornflowerblue;
+}
+
+img {
+    width: -webkit-fill-available;
 }
