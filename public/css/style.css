@@ -10,3 +10,12 @@ h1 {
 img {
     width: -webkit-fill-available;
 }
+
+#home h2 {
+    text-align: center;
+}
+
+#home-img {
+    width: 50%;
+    margin: auto;
+}
