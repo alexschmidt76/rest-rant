@@ -1,19 +1,19 @@
-// DEPENDENCIES
+//Modules and Globas
 const express = require('express');
-
-// CONFIGURATION
 require('dotenv').config();
 const PORT = process.env.PORT;
 const app = express();
 
-// MIDDLEWARE
+// Express Settings
+app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
+app.use(express.static('public'));
 
-// Places
+// Controllers and Routs
+// places controller
 app.use('/places', require('./controllers/places'));
 
-// ROUTES
 // home page
 app.get('/', (req, res) => {
     res.render('home');
@@ -24,7 +24,7 @@ app.get('*', (req, res) => {
     res.status(404).render('error404');
 });
 
-// LISTEN
+// Listen for Connections
 app.listen(PORT, () => {
-    console.log('connected');
+    console.log(`listening on port ${PORT}`);
 });
