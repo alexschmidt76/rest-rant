@@ -13,8 +13,8 @@ router.get('/new', (req, res) => {
 
 // POST /places
 router.post('/', (req, res) => {
+  // add default values if none are provided
   if (!req.body.pic) {
-    // Default image if one is not provided
     req.body.pic = 'http://placekitten.com/400/400';
   }
   if (!req.body.city) {

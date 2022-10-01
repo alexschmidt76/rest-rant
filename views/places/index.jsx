@@ -2,6 +2,7 @@ const React = require('react');
 const Def = require('../default');
 
 function index(data) {
+    // format each place in col-sm-6 divs
     let placesFormatted = data.places.map( (place, index) => {
         return (
             <div className='col-sm-6' key={index}>
@@ -16,6 +17,7 @@ function index(data) {
             </div>
         );
     });
+    // build places page
     return (
         <Def>
             <main>

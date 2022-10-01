@@ -1,3 +1,4 @@
+// places available when website launches
 module.exports = [{
     name: 'H-Thai-ML',
     city: 'Seattle',
