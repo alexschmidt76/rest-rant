@@ -8,10 +8,14 @@ h1 {
 }
 
 img {
-    width: -webkit-fill-available;
+   width: -webkit-fill-available;
 }
 
-#home h2 {
+h2 {
+    text-align: center;
+}
+
+h5 {
     text-align: center;
 }
 

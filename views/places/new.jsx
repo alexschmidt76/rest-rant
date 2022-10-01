@@ -2,6 +2,8 @@ const React = require('react');
 const Def = require('../default');
 
 function new_form() {
+    let stateList = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+    let stateOptionsFormatted = stateList.map( state => <option value={state} key={state}>{state}</option> );
     return (
         <Def>
             <main>
@@ -21,7 +23,10 @@ function new_form() {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='state'>State</label>
-                        <input className='form-control' id='state' name='state'/>
+                        <select className='form-control' id='state' name='state'>
+                            <option value="none" selected disabled hidden>Select an Option</option>
+                            {stateOptionsFormatted}
+                        </select>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='cuisines'>Cuisines</label>
