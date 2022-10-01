@@ -1,8 +1,8 @@
-//Modules and Globas
-const express = require('express');
+// Modules and Globals
 require('dotenv').config();
-const PORT = process.env.PORT;
+const express = require('express');
 const app = express();
+const PORT = process.env.PORT;
 
 // Express Settings
 app.set('views', __dirname + '/views');

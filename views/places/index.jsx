@@ -9,8 +9,7 @@ function index(data) {
                 <p className='text-center'>
                     {place.cuisines}
                 </p>
-                <img src={place.pic} alt={place.name} />
-                Photo by <a href={place.picAuthorCredit}>{place.picAuthor}</a> on <a href={place.picSiteCredit}>Unsplash</a>
+                <img src={place.pic} alt={place.name}/>
                 <p className='text-center'>
                     Located in {place.city}, {place.state}
                 </p>
