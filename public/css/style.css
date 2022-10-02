@@ -53,3 +53,8 @@ nav a:hover {
     color: pink;
     text-decoration: none;
 }
+
+.form-control {
+    width: 40%;
+    margin: auto;
+}
