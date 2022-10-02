@@ -11,6 +11,10 @@ router.get('/new', (req, res) => {
   res.render('places/new');
 });
 
+// GET /places/:id
+
+// GET /places/:id/edit
+
 // POST /places
 router.post('/', (req, res) => {
   // add default values if none are provided
@@ -26,5 +30,11 @@ router.post('/', (req, res) => {
   places.push(req.body);
   res.redirect('/places');
 });
+
+// POST /places/:id/rant
+
+// PUT /places/:id
+
+// DELETE /places/:id/rant/:rantId
 
 module.exports = router;

@@ -22,7 +22,6 @@ function index(data) {
         <Def>
             <main>
                 <h1>Places to Rant or Rave About</h1>
-                <h5>Add new places to review <a href='/places/new'>here</a>!</h5>
                 <div className='row'>
                     {placesFormatted}
                 </div>
