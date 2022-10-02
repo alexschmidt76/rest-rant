@@ -12,8 +12,21 @@ router.get('/new', (req, res) => {
 });
 
 // GET /places/:id
+router.get('/:id', (req, res) => {
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+    res.status(404).render('error404');
+  } else if (!places[id]) {
+    res.status(404).render('error404');
+  } else {
+    res.render('places/show', { place: places[id] });
+  }
+});
 
 // GET /places/:id/edit
+router.get('/:id/edit', (req, res) => {
+  res.send(`/${req.params.id}/edit`);
+});
 
 // POST /places
 router.post('/', (req, res) => {
