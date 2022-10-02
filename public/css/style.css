@@ -58,3 +58,12 @@ nav a:hover {
     width: 40%;
     margin: auto;
 }
+
+#show-page h2 {
+    color: rgb(109, 170, 190);
+}
+
+#show-div {
+    padding: 2em;
+    padding-top: 0;
+}

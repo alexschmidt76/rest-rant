@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
   } else if (!places[id]) {
     res.status(404).render('error404');
   } else {
-    res.render('places/show', { place: places[id] });
+    res.render('places/show', { place: places[id], id });
   }
 });
 
@@ -47,6 +47,19 @@ router.post('/', (req, res) => {
 // POST /places/:id/rant
 
 // PUT /places/:id
+
+// DELETE /places/:id
+router.delete('/:id', (req, res) => {
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+    res.status(404).render('error404');
+  } else if (!places[id]) {
+    res.status(404).render('error404');
+  } else {
+    places.splice(id, 1);
+    res.redirect('/places');
+  }
+});
 
 // DELETE /places/:id/rant/:rantId
 
