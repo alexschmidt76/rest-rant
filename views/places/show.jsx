@@ -7,10 +7,10 @@ function show(data) {
             <main id='show-page'>
                 <h1>{data.place.name}</h1>
                 <div className='row' id='show-div'>
-                    <div className='col-sm-6'>
+                    <div className='col-sm-8'>
                         <img src={data.place.pic} alt={data.place.name}/>
                     </div>
-                    <div className='col-sm-6'>
+                    <div className='col-sm-4'>
                         <div id='place-rating'>
                             <h2>Rating</h2>
                             <p>Not yet rated.</p>
@@ -18,7 +18,8 @@ function show(data) {
                         <div id='place-description'>
                             <h2>Description</h2>
                             <p className='text-center'>
-                                {data.place.name} is located in {data.place.city}, {data.place.state}. They serve {data.place.cuisines}.
+                                {data.place.name} is located in {data.place.city}, {data.place.state}. <br/>
+                                They serve {data.place.cuisines}.
                             </p>
                         </div>
                         <div id='edit-delete-btn-container'>
