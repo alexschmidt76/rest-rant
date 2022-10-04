@@ -31,7 +31,7 @@ router.get('/:id/edit', (req, res) => {
   }else if (!places[id]) {
     res.status(404).render('error404');
   } else {
-    res.render('places/edit', { place: places[id] });
+    res.render('places/edit', { place: places[id], id });
   }
 });
 
@@ -54,17 +54,25 @@ router.post('/', (req, res) => {
 // POST /places/:id/rant
 
 // PUT /places/:id
-router.put('/places/:id', (req, res) => {
-  if (!req.body.pic) {
-    req.body.pic = places[id].pic;
+router.put('/:id', (req, res) => {
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+    res.status(404).render('error404');
+  } else if (!places[id]) {
+    res.status(404).render('error404');
+  } else {
+    if (!req.body.pic) {
+      req.body.pic = places[id].pic;
+    }
+    if (!req.body.city) {
+      req.body.city = 'Anytown';
+    }
+    if (!req.body.state) {
+      req.body.state = 'USA';
+    }
+    places[id] = req.body;
+    res.redirect(`/places/${id}`)
   }
-  if (!req.body.city) {
-    req.body.city = 'Anytown';
-  }
-  if (!req.body.state) {
-    req.body.state = 'USA';
-  }
-  res.send('PUT /places/:id');
 });
 
 // DELETE /places/:id
