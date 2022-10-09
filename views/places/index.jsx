@@ -12,7 +12,7 @@ function index(data) {
                         <div className="card-body">
                             <h5 className="card-title">{place.name}</h5>
                             <p className="card-text">Serves {place.cuisines}, located in {place.city}, {place.state}.</p>
-                            <a href={`/places/${index}`} className="btn btn-primary">See Rants</a>
+                            <a href={`/places/${place.id}`} className="btn btn-primary">See Rants</a>
                         </div>
                     </div>
                 </div>
