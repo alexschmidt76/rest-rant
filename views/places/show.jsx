@@ -3,7 +3,7 @@ const Def = require('../default');
 
 function show(data) {
     return (
-        <Def>
+        <Def title={`${data.place.name} - REST-rant`}>
             <main id='show-page'>
                 <h1>{data.place.name}</h1>
                 <div className='row' id='show-div'>
@@ -23,11 +23,9 @@ function show(data) {
                             </p>
                         </div>
                         <div id='edit-delete-btn-container'>
-                            <a href={`/places/${data.id}/edit`} className='btn btn-warning'>
-                                Edit
-                            </a>
+                            <a href={`/places/${data.id}/edit`} className='btn btn-warning'>Edit</a>
                             <form method='POST' action={`/places/${data.id}?_method=DELETE`}>
-                                <input type='submit' className='btn btn-danger' value='Delete'>
+                                <input type='submit' className='btn btn-danger' value={'Delete'}>
                                 </input>
                             </form>
                         </div>

@@ -7,7 +7,7 @@ function new_form() {
     let stateOptionsFormatted = stateList.map( state => <option value={state} key={state}>{state}</option> );
     // show a form used to add a new place
     return (
-        <Def>
+        <Def title='Add a New Place - REST-rant'>
             <main>
                 <h1>Add a New Place</h1>
                 <form method='POST' action='/places'>
@@ -17,7 +17,7 @@ function new_form() {
                             <input className='form-control' id='name' name='name' required/>
                         </div>
                         <div className='form-group col-sm-6'>
-                            <label htmlFor='pic'>Place Picture</label>
+                            <label htmlFor='pic'>Place Picture (URL)</label>
                             <input className='form-control' type='url' id='pic' name='pic'/>
                         </div>
                     </div>  
@@ -29,20 +29,26 @@ function new_form() {
                         <div className='form-group col-sm-6'>
                             <label htmlFor='state'>State</label>
                             <select className='form-control' id='state' name='state'>
-                                <option value="none" selected disabled hidden>Select an Option</option>
+                                <option value='none' selected disabled hidden>Select an Option</option>
                                 {stateOptionsFormatted}
                             </select>
                         </div>
                     </div>
-                    <div className='form-group'>
-                        <label htmlFor='cuisines'>Cuisines</label>
-                        <input className='form-control' id='cuisines' name='cuisines' required/>
+                    <div className='row'>
+                        <div className='form-group col-sm-6'>
+                            <label htmlFor='cuisines'>Cuisines</label>
+                            <input className='form-control' id='cuisines' name='cuisines' required/>
+                        </div>
+                        <div className='form-group col-sm-6'>
+                            <label htmlFor='founded'>Year Founded</label>
+                            <input className='form-control' id='founded' name='founded'/>
+                        </div>
                     </div>
                     <input className='btn btn-primary new-btn' type='submit' value='Add Place'/>
                 </form>
             </main>
         </Def>
-    )
+    );
 }
 
 module.exports = new_form;

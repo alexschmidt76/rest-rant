@@ -71,7 +71,15 @@ nav a:hover {
 .new-btn {
     margin: 5px;
 }
+
 #edit-delete-btn-container * {
     display: inline-block;
     padding: 5px;
 }
+
+.col-sm-6 {
+    margin: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+

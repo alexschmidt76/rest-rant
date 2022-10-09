@@ -1,12 +1,16 @@
 const React = require('react');
-const places = require('../models/places.js');
+const db = require('../models');
 
 function Def(html) {
+    // get places array from db for dropdown menu in navbar
+    let places = [];
+    db.Place.find().then( data => places = data );
     let placesFormatted = places.map( (place, index) => <a className='dropdown-item' href={`/places/${index}`} key={index}>{place.name}</a> );
+    // default html with navbar for every page
     return (
         <html>
             <head>
-                <title>Title</title>
+                <title>{html.title || 'REST-rant'}</title>
                 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css' />
                 <link rel='stylesheet' href='/css/style.css' />
             </head>
@@ -19,23 +23,26 @@ function Def(html) {
                     </button>
                     <div className='collapse navbar-collapse' id='navbarNavDropdown'>
                         <ul className='navbar-nav'>
-                        <li className='nav-item active'>
-                            <a className='nav-link' href='/'>Home</a>
-                        </li>
-                        <li className='nav-item dropdown'>
-                            <a className='nav-link dropdown-toggle' href='/places' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                                Places
-                            </a>
-                            <div className='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
-                                <a className='dropdown-item' href='/places'>All Places</a>
-                                <div className='dropdown-divider'></div>
-                                {placesFormatted}
-                            </div>
-                        </li>
-                        <li className='nav-item'>
-                            <a className='nav-link' href='/places/new'>Add Place</a>
-                        </li>
+                            <li className='nav-item'>
+                                <a className='nav-link' href='/'>Home</a>
+                            </li>
+                            <li className='nav-item dropdown'>
+                                <a className='nav-link dropdown-toggle' href='/places' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                    Places
+                                </a>
+                                <div className='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+                                    <a className='dropdown-item' href='/places'>All Places</a>
+                                    <div className='dropdown-divider'></div>
+                                    {placesFormatted}
+                                </div>
+                            </li>
+                            <li className='nav-item'>
+                                <a className='nav-link' href='/places/new'>Add Place</a>
+                            </li>
                         </ul>
+                        <span className="navbar-text">
+                            Rate your favorite restaraunt today!
+                        </span>
                     </div>
                 </div>
                 </nav>
