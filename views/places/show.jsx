@@ -6,7 +6,7 @@ function show(data) {
         <Def title={`${data.place.name} - REST-rant`}>
             <main id='show-page'>
                 <h1>{data.place.name}</h1>
-                <p>Est. {data.place.founded}</p>
+                <p>{data.place.showEstablished()}</p>
                 <div className='row' id='show-div'>
                     <div className='col-sm-8'>
                         <img src={data.place.pic} alt={data.place.name}/>
