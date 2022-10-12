@@ -7,7 +7,7 @@ function edit_form(data) {
         return (
             state == data.place.state ?
             <option value={state} key={state} selected>{state}</option> :
-            <option value={state} key={state}>{state}</option> 
+            <option value={state} key={state}>{state}</option>
         );
     });
     return (
