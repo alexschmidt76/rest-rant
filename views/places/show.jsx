@@ -52,6 +52,18 @@ function show(data) {
                 <hr/>
                 <h2>Comments</h2>
                 {comments}
+                <h3>Add a comment:</h3>
+                <form method='POST' action={`/places/${data.place.id}/comment`}>
+                    <label htmlFor='author'>Author:</label>
+                    <input name='author' id='author' type='text'/>
+                    <label htmlFor='content'>Comment:</label>
+                    <input name='content' id='content' type='text'/>
+                    <label htmlFor='stars'>Star Rating</label>
+                    <input name='stars' id='stars' type='number' min='0' step='0.5' max='5'/>
+                    <label htmlFor='rant'>Rant</label>
+                    <input name='rant' id='rant' type='checkbox'/>
+                    <input type='submit'/>
+                </form>
             </main>
         </Def>
     );
