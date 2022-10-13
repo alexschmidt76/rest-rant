@@ -41,6 +41,7 @@ router.get('/new', (req, res) => {
 // GET /places/:id
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
+    .populate('comments')
     .then( place => {
       res.render('places/show', { place })
     })
