@@ -28,11 +28,14 @@ function show(data) {
         )
         comments = data.place.comments.map( c => {
             return (
-                <div className='border' key={c.id}>
+                <div className='border col-sm-4' key={c.id}>
                     <h2 className='rant'>{c.rant ? 'Rant!' : 'Rave!'}</h2>
                     <h4>{c.content}</h4>
                     <h3><strong>- {c.author}</strong></h3>
                     <h4>Rating: {c.stars}/5</h4>
+                    <form method='POST' action={`/places/${data.place.id}/comments/${c.id}?_method=DELETE`}>
+                        <input type='submit' className='btn btn-danger' value='Delete Comment'/>
+                    </form>
                 </div>
             );
         });
@@ -68,18 +71,37 @@ function show(data) {
                 </div>
                 <hr/>
                 <h2>Comments</h2>
-                {comments}
+                <div className='row'>
+                    {comments}
+                </div>
+                <hr/>
                 <h3>Add a comment:</h3>
                 <form method='POST' action={`/places/${data.place.id}/comment`}>
-                    <label htmlFor='author'>Author:</label>
-                    <input name='author' id='author' type='text'/>
-                    <label htmlFor='content'>Comment:</label>
-                    <input name='content' id='content' type='text'/>
-                    <label htmlFor='stars'>Star Rating</label>
-                    <input name='stars' id='stars' type='number' min='0' step='0.5' max='5'/>
-                    <label htmlFor='rant'>Rant</label>
-                    <input name='rant' id='rant' type='checkbox'/>
-                    <input type='submit'/>
+                    <div className='row'>
+                        <div className='form-group'>
+                            <label htmlFor='content'>Comment</label>
+                            <input className='form-control' name='content' id='content' type='text'/>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='form-group col-sm-4'>
+                            <label htmlFor='author'>Author</label>
+                            <input className='form-control' name='author' id='author' type='text'/>
+                        </div>
+                        <div className='form-group col-sm-4'>
+                            <label htmlFor='stars'>Star Rating</label>
+                            <input className='form-control' name='stars' id='stars' type='number' defaultValue='2.5' min='0' step='0.5' max='5'/>
+                        </div>
+                        <div className='col-sm-4'>
+                            <div className='form-group'>
+                                <br/>
+                                <label htmlFor='rant'>Rant?</label>
+                                <br/>
+                                <input className='' name='rant' id='rant' type='checkbox' width='10px'/>
+                            </div>
+                        </div>
+                    </div>
+                    <input className='btn btn-primary btn-new' type='submit' value='Add Comment'/>
                 </form>
             </main>
         </Def>

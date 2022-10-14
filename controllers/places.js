@@ -92,9 +92,14 @@ router.post('/:id/comment', (req, res) => {
     .catch( err => res.status(404).render('error404'));
 });
 
-// DELETE /places/:id/comment/:commentId
-router.delete('/:id/rand/:randId', (req, res) => {
-  res.send('DELETE /places/:id/rand/:randId stub');
+// DELETE /places/:id/comments/:commentId
+router.delete('/:id/comments/:commentId', (req, res) => {
+  db.Comment.findByIdAndDelete(req.params.commentId)
+    .then( comment => res.redirect(`/places/${req.params.id}`) )
+    .catch( err => {
+      console.log('err', err);
+      res.status(404).render('error404');
+    });
 });
 
 module.exports = router;

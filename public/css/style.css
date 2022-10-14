@@ -83,3 +83,6 @@ nav a:hover {
     padding-bottom: 12px;
 }
 
+.col-sm-4 {
+    margin: auto;
+}
