@@ -59,10 +59,9 @@ function show(data) {
                             </p>
                         </div>
                         <div id='edit-delete-btn-container'>
-                            <a href={`/places/${data.id}/edit`} className='btn btn-warning'>Edit</a>
-                            <form method='POST' action={`/places/${data.id}?_method=DELETE`}>
-                                <input type='submit' className='btn btn-danger' value={'Delete'}>
-                                </input>
+                            <a href={`/places/${data.place.id}/edit`} className='btn btn-warning'>Edit</a>
+                            <form method='POST' action={`/places/${data.place.id}?_method=DELETE`}>
+                                <input type='submit' className='btn btn-danger' value={'Delete'}/>
                             </form>
                         </div>
                     </div>

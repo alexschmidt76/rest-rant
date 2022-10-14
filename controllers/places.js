@@ -4,9 +4,7 @@ const db = require('../models');
 // GET /places
 router.get('/', (req, res) => {
   db.Place.find()
-    .then( places => {
-      res.render('places/index', { places });
-    })
+    .then( places => res.render('places/index', { places }) )
     .catch( err => {
       console.log('err', err);
       res.status(404).render('error404');
@@ -16,9 +14,7 @@ router.get('/', (req, res) => {
 // POST /places
 router.post('/', (req, res) => {
   db.Place.create(req.body)
-    .then( () => {
-      res.redirect('/places');
-    })
+    .then( () => res.redirect('/places') )
     .catch( err => {
       if (err && err.name == 'ValidationError') {
         let message = 'Validation Error: ';
@@ -42,9 +38,27 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
     .populate('comments')
-    .then( place => {
-      res.render('places/show', { place })
-    })
+    .then( place => res.render('places/show', { place }) )
+    .catch( err => {
+      console.log('err', err);
+      res.status(404).render('error404');
+    });
+});
+
+// DELETE /places/:id
+router.delete('/:id', (req, res) => {
+  db.Place.findByIdAndDelete(req.params.id)
+    .then( place => res.redirect('/places') )
+    .catch( err => {
+      console.log('err', err);
+      res.status(404).render('error404');
+    });
+});
+
+// GET /places/:id/edit
+router.get('/:id/edit', (req, res) => {
+  db.Place.findById(req.params.id)
+    .then( place => res.render('places/edit', { place }))
     .catch( err => {
       console.log('err', err);
       res.status(404).render('error404');
@@ -53,17 +67,12 @@ router.get('/:id', (req, res) => {
 
 // PUT /places/:id
 router.put('/:id', (req, res) => {
-  res.send('PUT /places/:id stub');
-});
-
-// DELETE /places/:id
-router.delete('/:id', (req, res) => {
-  res.send('DELETE /places/:id stub');
-});
-
-// GET /places/:id/edit
-router.get('/:id/edit', (req, res) => {
-  res.send('GET /places/:id/edit stub');
+  db.Place.findByIdAndUpdate(req.params.id, req.body)
+    .then( () => res.redirect(`/places/${req.params.id}`) )
+    .catch( err => {
+      console.log('err', err);
+      res.status(404).render('error404');
+    });
 });
 
 // POST /places/:id/comment
