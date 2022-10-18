@@ -28,7 +28,7 @@ function new_form(data) {
     }
     // show a form used to add a new place
     return (
-        <Def title='Add a New Place - REST-rant'>
+        <Def title='Add a New Place - REST-rant' places={data.places}>
             <main>
                 <h1>Add a New Place</h1>
                 {message}

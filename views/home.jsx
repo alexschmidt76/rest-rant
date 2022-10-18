@@ -1,9 +1,9 @@
 const React = require('react');
 const Def = require('./default');
 
-function home() {
+function home(data) {
     return (
-        <Def title='REST-rant Home'>
+        <Def title='REST-rant Home' places={data.places}>
             <main id='home'>
                 <h1>REST-rant</h1>
                 <p><b>

@@ -5,6 +5,8 @@ const methodOverride = require('method-override');
 const app = express();
 const PORT = process.env.PORT;
 
+const db = require('./models');
+
 // Express Settings
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
@@ -19,7 +21,8 @@ app.use('/places', require('./controllers/places'));
 
 // home page
 app.get('/', (req, res) => {
-    res.render('home');
+    db.Place.find()
+        .then( places => res.render('home', { places }) );
 });
 
 // 404 page

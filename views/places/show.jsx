@@ -41,7 +41,7 @@ function show(data) {
         });
     }
     return (
-        <Def title={`${data.place.name} - REST-rant`}>
+        <Def title={`${data.place.name} - REST-rant`} places={data.places}>
             <main id='show-page'>
                 <h1>{data.place.name}</h1>
                 <p>{data.place.showEstablished()}</p>

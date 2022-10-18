@@ -11,7 +11,7 @@ function edit_form(data) {
         );
     });
     return (
-        <Def title={`Edit ${data.place.name} - REST-rant`}>
+        <Def title={`Edit ${data.place.name} - REST-rant`} places={data.places}>
             <main>
                 <h1>Edit {data.place.name}</h1>
                 <form method='POST' action={`/places/${data.place.id}?_method=PUT`}>

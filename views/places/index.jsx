@@ -20,7 +20,7 @@ function index(data) {
         });
         // build places page
         return (
-            <Def title='REST-rant Places'>
+            <Def title='REST-rant Places' places={data.places}>
                 <main>
                     <h1>Places to Rant or Rave About</h1>
                     <div className='row'>
