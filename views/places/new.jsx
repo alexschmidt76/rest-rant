@@ -18,7 +18,7 @@ function new_form(data) {
         );
     } else {
         let returnList = stateList.map( state => <option value={state} key={state}>{state}</option> );
-        returnList.push(<option value='none' selected disabled hidden>Select an Option</option>);
+        returnList.push(<option value='none' key={'select-an-option'} selected disabled hidden>Select an Option</option>);
         stateListFormatted = returnList;
     }
     // generate error messages if needed

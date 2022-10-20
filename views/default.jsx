@@ -3,7 +3,7 @@ const db = require('../models');
 
 function Def(html) {
     // get places array from db for dropdown menu in navbar
-    let places = html.places;
+    let places = html.places == undefined ? [] : html.places;
     let placesFormatted = places.map( place => <a className='dropdown-item' href={`/places/${place.id}`} key={place.id}>{place.name}</a> );
     // default html with navbar for every page
     return (
